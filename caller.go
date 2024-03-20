@@ -445,6 +445,17 @@ func (c *Caller) WebWxSendAppMsg(ctx context.Context, msg *SendMessage, req *Bas
 	return parser.SentMessage(msg)
 }
 
+// WebWxSendAppMsgV2 发送APP消息
+func (c *Caller) WebWxSendAppMsgV2(ctx context.Context, msg *SendMessage, req *BaseRequest) (*SentMessage, error) {
+	resp, err := c.Client.WebWxSendAppMsgV2(ctx, msg, req)
+	if err != nil {
+		return nil, err
+	}
+	defer func() { _ = resp.Body.Close() }()
+	parser := MessageResponseParser{resp.Body}
+	return parser.SentMessage(msg)
+}
+
 // Logout 用户退出
 func (c *Caller) Logout(ctx context.Context, info *LoginInfo) error {
 	resp, err := c.Client.Logout(ctx, info)
