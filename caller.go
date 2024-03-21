@@ -446,8 +446,8 @@ func (c *Caller) WebWxSendAppMsg(ctx context.Context, msg *SendMessage, req *Bas
 }
 
 // WebWxSendAppMsgV2 发送APP消息
-func (c *Caller) WebWxSendAppMsgV2(ctx context.Context, msg *SendMessage, req *BaseRequest) (*SentMessage, error) {
-	resp, err := c.Client.WebWxSendAppMsgV2(ctx, msg, req)
+func (c *Caller) WebWxSendAppMsgV2(ctx context.Context, msg *SendMessage, req *BaseRequest, loginInfo *LoginInfo) (*SentMessage, error) {
+	resp, err := c.Client.WebWxSendAppMsgV2(ctx, msg, req, loginInfo)
 	if err != nil {
 		return nil, err
 	}
