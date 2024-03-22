@@ -666,9 +666,9 @@ func (c *Client) WebWxSendAppMsgV2(ctx context.Context, msg *SendMessage, reques
 		return nil, err
 	}
 	params := url.Values{}
-	params.Add("fun", "async")
-	params.Add("f", "json")
-	params.Add("lang", "zh_CN")
+	// params.Add("fun", "async")
+	// params.Add("f", "json")
+	// params.Add("lang", "zh_CN")
 	params.Add("pass_ticket", loginInfo.PassTicket)
 	path.RawQuery = params.Encode()
 	return c.sendMessage(ctx, request, path.String(), msg)
